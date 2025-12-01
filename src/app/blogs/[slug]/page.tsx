@@ -1,7 +1,6 @@
 import { Post } from '@/components/markdown/post'
 import { getBlog, getBlogs } from '@/services/blogs'
 import { formatDate } from '@/utils'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 interface StaticParams {
@@ -11,13 +10,15 @@ interface StaticParams {
 export const dynamicParams = false
 
 export async function generateStaticParams(): Promise<StaticParams[]> {
-  const posts = await getBlogs()
-
-  return posts.map((post) => {
-    return {
+  try {
+    const posts = await getBlogs()
+    return posts.map((post) => ({
       slug: `${post.slug}`,
-    }
-  })
+    }))
+  } catch (error) {
+    console.error('Error generating static params:', error)
+    return []
+  }
 }
 
 interface PageProps {
@@ -28,10 +29,15 @@ interface PageProps {
 
 export default async function Page(props: PageProps) {
   const params = await props.params
-
   const { slug } = params
 
-  const post = await getBlog(slug)
+  let post
+  try {
+    post = await getBlog(slug)
+  } catch (error) {
+    console.error('Error fetching blog:', error)
+    return notFound()
+  }
 
   if (!post) return notFound()
 
@@ -49,16 +55,12 @@ export default async function Page(props: PageProps) {
 
         <section className="my-5">
           <figure className="relative h-[250px] w-full md:h-[320px] lg:h-[400px] xl:h-[450px]">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={post.cover}
               alt={post.title}
-              fill={true}
-              sizes="100%"
-              className="rounded-md"
+              className="rounded-md w-full h-full object-cover"
             />
-            {/* <figcaption className="mt-2 text-center text-sm text-gray-500">
-              {post.title || 'Cover image for the article'}
-            </figcaption> */}
           </figure>
         </section>
 

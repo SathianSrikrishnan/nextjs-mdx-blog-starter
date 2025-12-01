@@ -51,9 +51,8 @@ export const Markdown: MDXComponents = {
       {children}
     </li>
   ),
-  img: ({ children, ...props }) => (
-    <img {...props} className="mb-4 h-auto max-w-full">
-      {children}
-    </img>
+  img: (props) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img {...props} alt={props.alt || ''} className="mb-4 h-auto max-w-full" />
   ),
 }

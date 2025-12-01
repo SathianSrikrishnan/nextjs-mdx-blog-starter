@@ -12,14 +12,16 @@ export type Blog = {
   body: string
 }
 
+const blogsDirectory = path.join(process.cwd(), 'data', 'blogs')
+
 export async function getBlogs() {
-  const posts = await fs.readdir('./data/blogs/')
+  const posts = await fs.readdir(blogsDirectory)
 
   return Promise.all(
     posts
       .filter((file) => path.extname(file) === '.mdx')
       .map(async (file) => {
-        const filePath = `./data/blogs/${file}`
+        const filePath = path.join(blogsDirectory, file)
         const fileContent = await fs.readFile(filePath, 'utf8')
         const { data, content } = matter(fileContent)
 

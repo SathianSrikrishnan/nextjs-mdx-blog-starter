@@ -79,18 +79,20 @@ if (!unlocked) {
           </div>
         </div>
 
+        <div className="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
+          <h3 className="font-semibold mb-3 text-lg">📖 Available Chapters:</h3>
+          <a 
+            href="/lumina/isa/chapters/chapter-1a"
+            className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          >
+            Start Chapter 1A: The Book of First Questions
+          </a>
+        </div>
+
         <a 
           href="/lumina" 
-          className="inline-block px-6 py-3 bg-pink-600 text-white rounded-lg"
-        ><div className="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
-  <h3 className="font-semibold mb-3 text-lg">📖 Available Chapters:</h3>
-  <a 
-    href="/lumina/isa/chapters/chapter-1a"
-    className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-  >
-    Start Chapter 1A: The Book of First Questions
-  </a>
-</div>
+          className="inline-block px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition"
+        >
           Back to Lumina
         </a>
       </div>

@@ -1,83 +1,411 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Landing Page */
+.landing-button {
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: white;
+  background-color: #9D4EDD;
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(157, 78, 221, 0.4), 0 0 60px rgba(157, 78, 221, 0.2);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.landing-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 50px rgba(157, 78, 221, 0.6), 0 0 100px rgba(157, 78, 221, 0.4);
+}
+
+:root {
+  --bg-dark: #1a1a2e;
+  --bg-card: #16213e;
+  --text-primary: #edf2f4;
+  --text-secondary: #8d99ae;
+  --purple-glow: #9D4EDD;
+  --teal-glow: #06D6A0;
+  --gold-glow: #FFD60A;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-} */
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 1rem;
-  @media (width >= --theme(--breakpoint-sm)) {
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Magical Background */
+.magical-bg {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(6, 214, 160, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 214, 10, 0.05) 0%, transparent 50%),
+    var(--bg-dark);
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Headings */
+h1 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+}
+
+/* Shelf Button Styles */
+.shelf-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  border: 3px solid;
+  border-radius: 24px;
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.shelf-button:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.shelf-button:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.shelf-button.purple {
+  border-color: var(--purple-glow);
+  box-shadow: 
+    0 0 20px rgba(157, 78, 221, 0.3),
+    0 0 40px rgba(157, 78, 221, 0.2),
+    inset 0 0 20px rgba(157, 78, 221, 0.1);
+}
+
+.shelf-button.purple:hover {
+  box-shadow: 
+    0 0 30px rgba(157, 78, 221, 0.5),
+    0 0 60px rgba(157, 78, 221, 0.3),
+    0 0 90px rgba(157, 78, 221, 0.2),
+    inset 0 0 30px rgba(157, 78, 221, 0.15);
+}
+
+.shelf-button.teal {
+  border-color: var(--teal-glow);
+  box-shadow: 
+    0 0 20px rgba(6, 214, 160, 0.3),
+    0 0 40px rgba(6, 214, 160, 0.2),
+    inset 0 0 20px rgba(6, 214, 160, 0.1);
+}
+
+.shelf-button.teal:hover {
+  box-shadow: 
+    0 0 30px rgba(6, 214, 160, 0.5),
+    0 0 60px rgba(6, 214, 160, 0.3),
+    0 0 90px rgba(6, 214, 160, 0.2),
+    inset 0 0 30px rgba(6, 214, 160, 0.15);
+}
+
+.shelf-button.gold {
+  border-color: var(--gold-glow);
+  box-shadow: 
+    0 0 20px rgba(255, 214, 10, 0.3),
+    0 0 40px rgba(255, 214, 10, 0.2),
+    inset 0 0 20px rgba(255, 214, 10, 0.1);
+}
+
+.shelf-button.gold:hover {
+  box-shadow: 
+    0 0 30px rgba(255, 214, 10, 0.5),
+    0 0 60px rgba(255, 214, 10, 0.3),
+    0 0 90px rgba(255, 214, 10, 0.2),
+    inset 0 0 30px rgba(255, 214, 10, 0.15);
+}
+
+/* Story Card Styles */
+.story-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+}
+
+.story-card-purple {
+  border-color: var(--purple-glow);
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+}
+
+.story-card-purple:hover {
+  box-shadow: 0 0 25px rgba(157, 78, 221, 0.4);
+}
+
+.story-card-teal {
+  border-color: var(--teal-glow);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.2);
+}
+
+.story-card-teal:hover {
+  box-shadow: 0 0 25px rgba(6, 214, 160, 0.4);
+}
+
+.story-card-gold {
+  border-color: var(--gold-glow);
+  box-shadow: 0 0 15px rgba(255, 214, 10, 0.2);
+}
+
+.story-card-gold:hover {
+  box-shadow: 0 0 25px rgba(255, 214, 10, 0.4);
+}
+
+.story-card .emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.story-card .title {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  border: 2px solid;
+}
+
+.btn-primary.purple {
+  border-color: var(--purple-glow);
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+}
+
+.btn-primary.purple:hover {
+  background: rgba(157, 78, 221, 0.2);
+  box-shadow: 0 0 25px rgba(157, 78, 221, 0.5);
+}
+
+.btn-primary.teal {
+  border-color: var(--teal-glow);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
+}
+
+.btn-primary.teal:hover {
+  background: rgba(6, 214, 160, 0.2);
+  box-shadow: 0 0 25px rgba(6, 214, 160, 0.5);
+}
+
+.btn-primary.gold {
+  border-color: var(--gold-glow);
+  box-shadow: 0 0 15px rgba(255, 214, 10, 0.3);
+}
+
+.btn-primary.gold:hover {
+  background: rgba(255, 214, 10, 0.2);
+  box-shadow: 0 0 25px rgba(255, 214, 10, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* Page Navigation */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.page-nav .btn {
+  flex: 1;
+  max-width: 150px;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+/* Glow Text */
+.glow-text.purple {
+  color: var(--purple-glow);
+  text-shadow: 0 0 20px rgba(157, 78, 221, 0.5), 0 0 40px rgba(157, 78, 221, 0.3);
+}
+
+.glow-text.teal {
+  color: var(--teal-glow);
+  text-shadow: 0 0 20px rgba(6, 214, 160, 0.5), 0 0 40px rgba(6, 214, 160, 0.3);
+}
+
+.glow-text.gold {
+  color: var(--gold-glow);
+  text-shadow: 0 0 20px rgba(255, 214, 10, 0.5), 0 0 40px rgba(255, 214, 10, 0.3);
+}
+
+/* Story Content */
+.story-content {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 2rem;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  min-height: 300px;
+}
+
+/* Story Viewer Layout */
+.story-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.story-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.story-header h1 {
+  margin-bottom: 0;
+}
+
+.story-iframe-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.story-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #000;
+}
+
+/* Fallback content when no iframe */
+.story-iframe-container .story-content {
+  height: 100%;
+  overflow-y: auto;
+  border-radius: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .shelf-button {
+    height: 150px;
+  }
+  
+  .page-nav {
+    flex-wrap: wrap;
+  }
+  
+  .page-nav .btn {
     max-width: none;
   }
-  @media (width >= 1400px) {
-    max-width: 1400px;
+
+  .story-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .story-header h1 {
+    font-size: 1.1rem !important;
   }
 }
 
-@theme {
-  --font-sans: Segoe UI, ui-sans-serif, system-ui;
-  --font-serif: Segoe UI, ui-serif, Georgia, serif;
-  --font-mono: Segoe UI, ui-monospace, Menlo, monospace;
-
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    var(--tw-gradient-stops)
-  );
-  --background-image-gradient-pattern-1: linear-gradient(
-    115deg,
-    #000000,
-    #444444
-  );
-  --background-image-gradient-pattern-2: linear-gradient(
-    115deg,
-    #000000,
-    #444444
-  );
-
-  --color-theme: #fb991c;
-  --color-theme-hover: #d48119;
-
-  --color-light: #f4f4f4;
-  --color-light-hover: #e0e0e0;
-
-  --color-darkest: #292432;
-  --color-lightest: #ffffff;
-  --color-primary: #161616;
-  --color-secondary: #4b5563;
-  --color-dark: #191f33;
-  --color-mid: #2e3447;
-}
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}

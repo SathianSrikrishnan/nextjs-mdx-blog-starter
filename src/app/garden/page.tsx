@@ -1,3 +1,8 @@
+export const dynamicParams = false
+
+export async function generateStaticParams() {
+  return []
+}
 export default function GardenPage() {
   return (
     <main className="max-w-3xl mx-auto py-10 px-4">

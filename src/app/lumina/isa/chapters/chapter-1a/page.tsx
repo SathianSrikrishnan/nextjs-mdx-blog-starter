@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Chapter1A() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-pink-50 to-purple-50 py-12 px-6">
@@ -45,19 +47,19 @@ export default function Chapter1A() {
           </div>
 
           <div className="mt-12 flex gap-4">
-            <a 
+            <Link 
               href="/lumina/isa" 
               className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition"
             >
               ← Back to My Island
-            </a>
+            </Link>
             
-            <a 
+            <Link 
               href="/lumina/isa/quest-1a" 
               className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
             >
               Start Quest 1A →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

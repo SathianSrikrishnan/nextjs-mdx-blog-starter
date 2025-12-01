@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Quest1A() {
   return (
     <main className="min-h-screen bg-pink-50 py-12 px-6">
@@ -53,18 +55,18 @@ export default function Quest1A() {
         </div>
 
         <div className="flex gap-4">
-          <a 
+          <Link 
             href="/lumina/isa/chapters/chapter-1a"
             className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition"
           >
             ← Back to Chapter
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/lumina/isa"
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
           >
             Return to My Island
-          </a>
+          </Link>
         </div>
       </div>
     </main>

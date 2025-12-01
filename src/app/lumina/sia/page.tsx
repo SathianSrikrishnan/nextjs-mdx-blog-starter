@@ -1,55 +1,56 @@
 'use client'
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function SiaInfo() {
-    const [password, setPassword] = useState('');
-const [unlocked, setUnlocked] = useState(false);
+  const [password, setPassword] = useState('');
+  const [unlocked, setUnlocked] = useState(false);
 
-const correctPassword = 'luminous';
+  const correctPassword = 'luminous';
 
-const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  if (password.toLowerCase() === correctPassword) {
-    setUnlocked(true);
-  } else {
-    alert('Not quite... try the magic word from your chapter! 🔮');
-  }
-};
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password.toLowerCase() === correctPassword) {
+      setUnlocked(true);
+    } else {
+      alert('Not quite... try the magic word from your chapter! 🔮');
+    }
+  };
 
-// Password gate
-if (!unlocked) {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-cyan-900 to-blue-900 flex items-center justify-center px-4">
-      <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl max-w-md w-full">
-        <h2 className="text-3xl font-bold text-white mb-4 text-center">
-          🔒 Sia's Secret Cloud
-        </h2>
-        <p className="text-blue-200 mb-6 text-center">
-          Enter the magic word from your chapter
-        </p>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Magic word..."
-            className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-blue-300 border-2 border-blue-400 focus:outline-none focus:border-cyan-400"
-          />
+  // Password gate
+  if (!unlocked) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-cyan-900 to-blue-900 flex items-center justify-center px-4">
+        <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl max-w-md w-full">
+          <h2 className="text-3xl font-bold text-white mb-4 text-center">
+            🔒 Sia's Secret Cloud
+          </h2>
+          <p className="text-blue-200 mb-6 text-center">
+            Enter the magic word from your chapter
+          </p>
           
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 rounded-lg font-bold hover:from-cyan-600 hover:to-blue-700 transition"
-          >
-            Unlock ✨
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Magic word..."
+              className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-blue-300 border-2 border-blue-400 focus:outline-none focus:border-cyan-400"
+            />
+            
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 rounded-lg font-bold hover:from-cyan-600 hover:to-blue-700 transition"
+            >
+              Unlock ✨
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
-// Original content below (when unlocked)
+  // Original content below (when unlocked)
   return (
     <main className="min-h-screen bg-blue-50 py-20 px-6">
       <div className="max-w-3xl mx-auto">
@@ -86,20 +87,22 @@ if (!unlocked) {
           </p>
         </div>
 
-        <a 
+        <div className="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
+          <h3 className="font-semibold mb-3 text-lg">📖 Available Chapters:</h3>
+          <Link 
+            href="/lumina/sia/chapters/chapter-1b"
+            className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          >
+            Start Chapter 1B: The Broken Star Machine
+          </Link>
+        </div>
+
+        <Link 
           href="/lumina" 
           className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-        ><div className="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
-  <h3 className="font-semibold mb-3 text-lg">📖 Available Chapters:</h3>
-  <a 
-    href="/lumina/sia/chapters/chapter-1b"
-    className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-  >
-    Start Chapter 1B: The Broken Star Machine
-  </a>
-</div>
+        >
           Back to Lumina
-        </a>
+        </Link>
       </div>
     </main>
   );

@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function IsaInfo() {
     const [password, setPassword] = useState('');
@@ -81,20 +82,20 @@ if (!unlocked) {
 
         <div className="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
           <h3 className="font-semibold mb-3 text-lg">📖 Available Chapters:</h3>
-          <a 
+          <Link 
             href="/lumina/isa/chapters/chapter-1a"
             className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
           >
             Start Chapter 1A: The Book of First Questions
-          </a>
+          </Link>
         </div>
 
-        <a 
+        <Link 
           href="/lumina" 
           className="inline-block px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition"
         >
           Back to Lumina
-        </a>
+        </Link>
       </div>
     </main>
   );

@@ -1,33 +1,38 @@
-import { getBlogs } from '@/services/blogs'
 import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL!
-  const blogsPageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs`
-
-  const blogs = await getBlogs()
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sathian.ai'
 
   return [
-    // home page
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'always',
-      priority: 0.7,
+      changeFrequency: 'weekly',
+      priority: 1.0,
     },
-    // main blog page url
     {
-      url: blogsPageUrl,
+      url: `${baseUrl}/garden`,
       lastModified: new Date(),
-      changeFrequency: 'always',
-      priority: 0.7,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
-    // blog page
-    ...(blogs.map((blog) => ({
-      url: `${baseUrl}/blogs/${blog.slug}`,
+    {
+      url: `${baseUrl}/studio`,
       lastModified: new Date(),
-      changeFrequency: 'always',
-      priority: 0.7,
-    })) as MetadataRoute.Sitemap),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/children`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/lumina`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ]
 }

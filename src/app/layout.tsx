@@ -4,34 +4,26 @@ import './globals.css'
 
 const quicksand = Quicksand({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
-const title = 'Resources Library'
-
-const description =
-  'Discover a curated collection of the latest resources, templates, and strategies designed to help you excel in technical interviews and build your expertise with confidence'
-
+const title = 'Lumina - Magical Stories for Kids'
+const description = 'Discover magical stories and adventures in the world of Lumina'
 const url = process.env.NEXT_PUBLIC_SITE_URL || 'https://sathian.ai'
 
 export const metadata: Metadata = {
   applicationName: 'Lumina',
   title,
   description,
-  category: 'education',
-  alternates: {
-    canonical: url,
-  },
   metadataBase: new URL(url),
   openGraph: {
     title,
     description,
     url,
-    siteName: 'Learn Now',
+    siteName: 'Lumina',
     type: 'website',
   },
   twitter: {
     title,
     description,
     card: 'summary_large_image',
-    creator: '@Basit_Miyanji',
   },
 }
 

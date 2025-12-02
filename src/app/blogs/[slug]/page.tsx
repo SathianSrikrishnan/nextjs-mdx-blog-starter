@@ -1,25 +1,10 @@
 import { Post } from '@/components/markdown/post'
-import { getBlog, getBlogs } from '@/services/blogs'
+import { getBlog } from '@/services/blogs'
 import { formatDate } from '@/utils'
 import { notFound } from 'next/navigation'
 
-interface StaticParams {
-  slug: string
-}
-
-export const dynamicParams = false
-
-export async function generateStaticParams(): Promise<StaticParams[]> {
-  try {
-    const posts = await getBlogs()
-    return posts.map((post) => ({
-      slug: `${post.slug}`,
-    }))
-  } catch (error) {
-    console.error('Error generating static params:', error)
-    return []
-  }
-}
+// Force dynamic rendering to avoid prerender issues
+export const dynamic = 'force-dynamic'
 
 interface PageProps {
   params: Promise<{

@@ -51,9 +51,7 @@ export const Markdown: MDXComponents = {
       {children}
     </li>
   ),
-  img: ({ children, ...props }) => (
-    <img {...props} className="mb-4 h-auto max-w-full">
-      {children}
-    </img>
+  img: (props) => (
+    <img {...props} className="mb-4 h-auto max-w-full" />
   ),
 }

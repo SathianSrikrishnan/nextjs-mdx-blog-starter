@@ -1,0 +1,16 @@
+{
+    "project": "lumina",
+    "style": "nextjs + tailwind",
+    "rules": [
+      "Only modify files inside this repository.",
+      "Never modify unrelated files.",
+      "Never introduce redesigns unless instructed.",
+      "Always create a new branch for major changes.",
+      "Follow the directory rules in docs/ARCHITECTURE.md."
+    ],
+    "deploy": {
+      "provider": "vercel",
+      "productionBranch": "main"
+    }
+  }
+  

@@ -1,27 +1,7 @@
-@import "tailwindcss";
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-/* Landing Page */
-.landing-button {
-  padding: 1rem 2.5rem;
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: white;
-  background-color: #9D4EDD;
-  border-radius: 1rem;
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.4), 0 0 60px rgba(157, 78, 221, 0.2);
-  transition: all 0.3s ease-out;
-  text-decoration: none;
-}
-
-.landing-button:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 50px rgba(157, 78, 221, 0.6), 0 0 100px rgba(157, 78, 221, 0.4);
 }
 
 :root {
@@ -202,15 +182,23 @@ h2 {
 
 .story-card .emoji {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   display: block;
 }
 
 .story-card .title {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.story-card .summary {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
+  line-height: 1.5;
+  display: block;
 }
 
 /* Button Styles */

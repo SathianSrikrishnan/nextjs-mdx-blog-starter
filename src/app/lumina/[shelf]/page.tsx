@@ -1,37 +1,22 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { getStoriesByShelf } from '../data/stories'
 
-const shelfData: Record<string, {
+const shelfMeta: Record<string, {
   name: string
   color: 'purple' | 'teal' | 'gold'
-  stories: { id: string; title: string; emoji: string }[]
 }> = {
   'isas-dream-shelf': {
     name: "Isa's Dream Shelf",
     color: 'purple',
-    stories: [
-      { id: 'the-infinite-shell-storm', title: 'The Infinite Shell Storm', emoji: '🌊' },
-      { id: 'moonlight-whispers', title: 'Moonlight Whispers', emoji: '🌙' },
-      { id: 'dancing-shadows', title: 'Dancing Shadows', emoji: '💫' },
-    ],
   },
   'sias-spark-shelf': {
     name: "Sia's Spark Shelf",
     color: 'teal',
-    stories: [
-      { id: 'jiras-infinite-neck', title: "Jira's Infinite Neck", emoji: '🦒' },
-      { id: 'the-crystal-garden', title: 'The Crystal Garden', emoji: '💎' },
-      { id: 'starlight-adventure', title: 'Starlight Adventure', emoji: '⭐' },
-    ],
   },
   'twin-sparks-shelf': {
     name: 'Twin Sparks Shelf',
     color: 'gold',
-    stories: [
-      { id: 'the-great-shell-heist', title: 'The Great Shell Heist', emoji: '⚡' },
-      { id: 'double-trouble', title: 'Double Trouble', emoji: '🎭' },
-      { id: 'the-golden-quest', title: 'The Golden Quest', emoji: '🏆' },
-    ],
   },
 }
 
@@ -41,9 +26,10 @@ export default async function ShelfPage({
   params: Promise<{ shelf: string }> 
 }) {
   const { shelf: shelfId } = await params
-  const shelf = shelfData[shelfId]
+  const shelf = shelfMeta[shelfId]
+  const stories = getStoriesByShelf(shelfId)
 
-  if (!shelf) {
+  if (!shelf || stories.length === 0) {
     notFound()
   }
 
@@ -60,16 +46,17 @@ export default async function ShelfPage({
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
           gap: '1.5rem' 
         }}>
-          {shelf.stories.map((story) => (
+          {stories.map((story) => (
             <div 
               key={story.id} 
               className={`story-card story-card-${shelf.color}`}
             >
               <span className="emoji">{story.emoji}</span>
               <h3 className="title">{story.title}</h3>
+              <p className="summary">{story.summary}</p>
               <Link 
                 href={`/lumina/${shelfId}/${story.id}`} 
                 className={`btn btn-primary ${shelf.color}`}
@@ -86,6 +73,6 @@ export default async function ShelfPage({
 }
 
 export function generateStaticParams() {
-  return Object.keys(shelfData).map((shelf) => ({ shelf }))
+  return Object.keys(shelfMeta).map((shelf) => ({ shelf }))
 }
 

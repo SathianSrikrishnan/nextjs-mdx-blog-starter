@@ -1,10 +1,29 @@
+export const dynamicParams = false
+
+export async function generateStaticParams() {
+  return []
+}
 import { Post } from '@/components/markdown/post'
-import { getBlog } from '@/services/blogs'
+import { getBlog, getBlogs } from '@/services/blogs'
 import { formatDate } from '@/utils'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
-// Force dynamic rendering to avoid prerender issues
-export const dynamic = 'force-dynamic'
+interface StaticParams {
+  slug: string
+}
+
+export const dynamicParams = false
+
+export async function generateStaticParams(): Promise<StaticParams[]> {
+  const posts = await getBlogs()
+
+  return posts.map((post) => {
+    return {
+      slug: `${post.slug}`,
+    }
+  })
+}
 
 interface PageProps {
   params: Promise<{
@@ -14,15 +33,10 @@ interface PageProps {
 
 export default async function Page(props: PageProps) {
   const params = await props.params
+
   const { slug } = params
 
-  let post
-  try {
-    post = await getBlog(slug)
-  } catch (error) {
-    console.error('Error fetching blog:', error)
-    return notFound()
-  }
+  const post = await getBlog(slug)
 
   if (!post) return notFound()
 
@@ -40,12 +54,16 @@ export default async function Page(props: PageProps) {
 
         <section className="my-5">
           <figure className="relative h-[250px] w-full md:h-[320px] lg:h-[400px] xl:h-[450px]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={post.cover}
               alt={post.title}
-              className="rounded-md w-full h-full object-cover"
+              fill={true}
+              sizes="100%"
+              className="rounded-md"
             />
+            {/* <figcaption className="mt-2 text-center text-sm text-gray-500">
+              {post.title || 'Cover image for the article'}
+            </figcaption> */}
           </figure>
         </section>
 

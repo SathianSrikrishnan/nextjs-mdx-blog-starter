@@ -1,35 +1,37 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk } from 'next/font/google'
+import { Quicksand } from 'next/font/google'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ['latin'], 
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-space-grotesk'
-})
+const quicksand = Quicksand({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
-const url = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+const title = 'Resources Library'
+
+const description =
+  'Discover a curated collection of the latest resources, templates, and strategies designed to help you excel in technical interviews and build your expertise with confidence'
+
+const url = process.env.NEXT_PUBLIC_SITE_URL
 
 export const metadata: Metadata = {
-  applicationName: 'Experiments in AI',
-  title: 'Experiments in AI',
-  description: 'Building tools to learn and teach',
+  applicationName: 'Learn Now',
+  title,
+  description,
   category: 'education',
   alternates: {
     canonical: url,
   },
-  metadataBase: new URL(url),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
   openGraph: {
-    title: 'Experiments in AI',
-    description: 'Building tools to learn and teach',
+    title,
+    description,
     url,
-    siteName: 'Experiments in AI',
+    siteName: 'Learn Now',
     type: 'website',
   },
   twitter: {
-    title: 'Experiments in AI',
-    description: 'Building tools to learn and teach',
+    title,
+    description,
     card: 'summary_large_image',
+    creator: '@Basit_Miyanji',
   },
 }
 
@@ -40,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${spaceGrotesk.className}`}>{children}</body>
+      <body className={quicksand.className}>{children}</body>
     </html>
   )
 }

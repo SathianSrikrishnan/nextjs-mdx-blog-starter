@@ -18,7 +18,8 @@ export async function generateMetadata(props: PageParams): Promise<Metadata | nu
 
   const { title, shortDescription: description, cover, slug } = post
 
-  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${slug}`
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sathian.ai'
+  const url = `${siteUrl}/blogs/${slug}`
 
   const metadata: Metadata = {
     title,
@@ -26,7 +27,7 @@ export async function generateMetadata(props: PageParams): Promise<Metadata | nu
     alternates: {
       canonical: url,
     },
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
+    metadataBase: new URL(siteUrl),
     openGraph: {
       title,
       description,

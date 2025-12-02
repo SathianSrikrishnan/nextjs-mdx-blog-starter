@@ -1,8 +1,3 @@
-export const dynamicParams = false
-
-export async function generateStaticParams() {
-  return []
-}
 import { Post } from '@/components/markdown/post'
 import { getBlog, getBlogs } from '@/services/blogs'
 import { formatDate } from '@/utils'

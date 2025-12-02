@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Page() {
   return (
     <main className="max-w-3xl mx-auto py-20 px-6">
@@ -8,10 +10,10 @@ export default function Page() {
       </p>
 
       <div className="space-x-4">
-        <a href="/garden" className="text-blue-600 hover:underline">Garden</a>
-        <a href="/studio" className="text-blue-600 hover:underline">Studio</a>
-        <a href="/children" className="text-blue-600 hover:underline">Children</a>
+        <Link href="/garden" className="text-blue-600 hover:underline">Garden</Link>
+        <Link href="/studio" className="text-blue-600 hover:underline">Studio</Link>
+        <Link href="/children" className="text-blue-600 hover:underline">Children</Link>
       </div>
     </main>
-  );
+  )
 }

@@ -9,17 +9,17 @@ const title = 'Resources Library'
 const description =
   'Discover a curated collection of the latest resources, templates, and strategies designed to help you excel in technical interviews and build your expertise with confidence'
 
-const url = process.env.NEXT_PUBLIC_SITE_URL
+const url = process.env.NEXT_PUBLIC_SITE_URL || 'https://sathian.ai'
 
 export const metadata: Metadata = {
-  applicationName: 'Learn Now',
+  applicationName: 'Lumina',
   title,
   description,
   category: 'education',
   alternates: {
     canonical: url,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
+  metadataBase: new URL(url),
   openGraph: {
     title,
     description,

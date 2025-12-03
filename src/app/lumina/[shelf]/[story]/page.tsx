@@ -34,7 +34,7 @@ const shellStormImages: Record<number, string> = {
   7: '/stories/shell-storm/Shell-Storm 7.png',
   8: '/stories/shell-storm/Shell Storm 8.png',
   9: '/stories/shell-storm/Shell-Storm-9.png',
-  10: '/stories/shell-storm/Shell-Storm-9.png', // Placeholder - page 10 image missing
+  10: '/stories/shell-storm/Shell-Store-10.png',
   11: '/stories/shell-storm/Shell-Storm-11.png',
   12: '/stories/shell-storm/Shell-Storm-12.png',
   13: '/stories/shell-storm/Shell-Storm-13.png',
